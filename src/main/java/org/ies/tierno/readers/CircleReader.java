@@ -19,7 +19,7 @@ public class CircleReader {
         int radio = scanner.nextInt();
         scanner.nextLine();
 
-        return new Circle (color, radio);
+        return new Circle(color, radio);
     }
 
 
