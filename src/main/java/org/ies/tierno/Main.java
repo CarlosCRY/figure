@@ -1,19 +1,27 @@
 package org.ies.tierno;
 
-import org.ies.tierno.models.Square;
-import org.ies.tierno.models.Circle;
-import org.ies.tierno.models.Triangle;
+import org.ies.tierno.models.Draw;
+
+import org.ies.tierno.readers.SquareReader;
+import org.ies.tierno.readers.CircleReader;
+import org.ies.tierno.readers.TriangleReader;
+import org.ies.tierno.readers.FigureReader;
+import org.ies.tierno.readers.DrawReader;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Square square = new Square ("Red", 7);
-        Circle circle = new Circle("Golden", 8);
-        Triangle triangle = new Triangle ("Purple", 4, 3);
+        Scanner scanner = new Scanner(System.in);
+        SquareReader squareReader = new SquareReader (scanner);
+        CircleReader circleReader = new CircleReader (scanner);
+        TriangleReader triangleReader = new TriangleReader (scanner);
+        FigureReader figureReader = new FigureReader (scanner, squareReader, circleReader, triangleReader);
+        DrawReader drawReader = new DrawReader (scanner, figureReader);
 
-        square.showInfo();
+        Draw draw = drawReader.read();
 
-        circle.showInfo();
+        draw.showInfo();
 
-        triangle.showInfo();
     }
 }
